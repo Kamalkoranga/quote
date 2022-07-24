@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quote api</title>
+	<style>
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		} 
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Hello Api!</h1>
+		<h3 id="quote"></h3>
+		<p id="author"></p>
+	</div>
+
+	<script>
+		const options = {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': '13a3fdc433mshc472900b88d594cp11dce7jsnadce2b996b30',
+				'X-RapidAPI-Host': 'ai-quote3.p.rapidapi.com'
+			}
+		};
+
+		let quote = document.getElementById('quote')
+		let author = document.getElementById('author')
+
+		fetch('https://ai-quote3.p.rapidapi.com/ai-quotes', options)
+			.then(response => response.json())
+			.then(response => {
+				quote.innerHTML = response.quote;
+				author.innerHTML = response.author;
+			})
+			.catch(err => console.error(err));
+
+
+	</script>
+</body>
+</html>
